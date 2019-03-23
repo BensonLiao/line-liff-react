@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import liffHelper from '../utils/liffHelper'
+import liffHelper from '../utils/LiffHelper'
 
 export default class LIFFWindow extends Component {
   constructor(props) {
@@ -11,6 +10,8 @@ export default class LIFFWindow extends Component {
     this.setTextInputRef = this.setTextInputRef.bind(this)
     this.openLIFFWindow = this.openLIFFWindow.bind(this)
     this.openLIFFWindowExternal = this.openLIFFWindowExternal.bind(this)
+    // bind external function
+    this.closeWindow = liffHelper.closeWindow()
   }
 
   setTextInputRef = element => {
@@ -25,56 +26,40 @@ export default class LIFFWindow extends Component {
     liffHelper.openWindow(this.textInput.value, true)
   }
 
-  closeWindow() {
-    liffHelper.closeWindow()
-  }
-
   render() {
     return (
       <div className="page-content">
         <div className="col-lg-3" />
         <div className="col-lg-6">
           <div className="form-group">
-            <label htmlFor="userid">Url:</label>
-            <input 
-            ref={this.setTextInputRef} 
-            type="text" 
-            className="form-control" 
-            id="userid" 
-            defaultValue="https://www.google.com" 
-            />
+            <label htmlFor="userid">
+              Url:
+              <input
+                ref={this.setTextInputRef}
+                type="text"
+                className="form-control"
+                id="userid"
+                defaultValue="https://www.google.com"
+              />
+            </label>
           </div>
           <div className="form-group">
-            <button 
-            type="button" 
-            class="btn btn-default" 
-            onClick={this.openLIFFWindow}>
-            Open Url in LINE Browser
+            <button type="button" className="btn btn-default" onClick={this.openLIFFWindow}>
+              Open Url in LINE Browser
             </button>
           </div>
           <div className="form-group">
-            <button 
-            type="button" 
-            class="btn btn-default" 
-            onClick={this.openLIFFWindowExternal}>
-            Open Url in External Browser
+            <button type="button" className="btn btn-default" onClick={this.openLIFFWindowExternal}>
+              Open Url in External Browser
             </button>
           </div>
           <hr />
-          <button 
-          type="button" 
-          className="btn btn-default" 
-          onClick={this.closeWindow}>
-          Close LIFF
+          <button type="button" className="btn btn-default" onClick={this.closeWindow}>
+            Close LIFF
           </button>
         </div>
         <div className="col-lg-3" />
       </div>
     )
   }
-}
-
-LIFFWindow.PropTypes = {
-  textInput: PropTypes.element,
-  setTextInputRef: PropTypes.func.isRequired,
 }

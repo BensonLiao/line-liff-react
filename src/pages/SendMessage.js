@@ -1,133 +1,161 @@
-import React, { Component } from 'react'
+import React, { Component, createRef } from 'react'
 import PropTypes from 'prop-types'
-import liffHelper from '../utils/liffHelper'
-import messageHelper from '../utils/messagingApiHelper'
 import swal from 'sweetalert2'
 import { geolocated } from 'react-geolocated'
+import MessageField from './MessageField'
+import LiffHelper from '../utils/LiffHelper'
+import messageHelper from '../utils/MessagingApiHelper'
+
+const textMessageOptions = [
+  {
+    key: 'search imgur account',
+    value: 'search imgur account'
+  },
+  {
+    key: 'upload to imgur',
+    value: 'upload to imgur'
+  }
+]
 
 const messageTypes = [
-  { 
-    key: 'text', 
-    label: 'Text', 
-    editable: true, 
-    value: 'give me brown' 
+  {
+    key: 'text',
+    label: 'Text',
+    editable: true,
+    value: 'give me brown'
   },
-  { 
-    key: 'image', 
-    label: 'Image', 
-    editable: true, 
-    value: 'https://developers.line.biz/media/messaging-api/using-line-url-scheme/camera-screen-3c7466e3.png' 
+  {
+    key: 'text_selection',
+    label: 'Text with Q&A',
+    editable: true,
+    value: textMessageOptions
   },
-  { 
-    key: 'video', 
-    label: 'Video', 
-    editable: false, 
-    value: 'https://www.sample-videos.com/video/mp4/720/big_buck_bunny_720p_5mb.mp4' 
+  {
+    key: 'image',
+    label: 'Image',
+    editable: true,
+    value:
+      'https://developers.line.biz/media/messaging-api/using-line-url-scheme/camera-screen-3c7466e3.png'
   },
-  { 
-    key: 'audio', 
-    label: 'Audio', 
-    editable: false, 
-    value: 'https://cdn.online-convert.com/example-file/audio/m4a/example.m4a' 
+  {
+    key: 'video',
+    label: 'Video',
+    editable: false,
+    value: 'https://www.sample-videos.com/video/mp4/720/big_buck_bunny_720p_5mb.mp4'
   },
-  { 
-    key: 'location', 
-    label: 'Location', 
-    editable: false, 
-    value: 'Location' 
+  {
+    key: 'audio',
+    label: 'Audio',
+    editable: false,
+    value: 'https://cdn.online-convert.com/example-file/audio/m4a/example.m4a'
   },
-  { 
-    key: 'button', 
-    label: 'Template - Button', 
-    editable: false, 
-    value: 'Button' 
+  {
+    key: 'location',
+    label: 'Location',
+    editable: false,
+    value: 'Location'
   },
-  { 
-    key: 'confirm', 
-    label: 'Template - Confirm', 
-    editable: false, 
-    value: 'Confirm' 
+  {
+    key: 'button',
+    label: 'Template - Button',
+    editable: false,
+    value: 'Button'
   },
-  { 
-    key: 'carousel', 
-    label: 'Template - Carousel', 
-    editable: false, 
-    value: 'Carousel', 
-    disabled: true 
+  {
+    key: 'confirm',
+    label: 'Template - Confirm',
+    editable: false,
+    value: 'Confirm'
   },
-  { 
-    key: 'image-carousel', 
-    label: 'Template - Image carousel', 
-    editable: false, 
-    value: 'Image carousel', 
-    disabled: true 
+  {
+    key: 'carousel',
+    label: 'Template - Carousel',
+    editable: false,
+    value: 'Carousel',
+    disabled: true
   },
+  {
+    key: 'image-carousel',
+    label: 'Template - Image carousel',
+    editable: false,
+    value: 'Image carousel',
+    disabled: true
+  }
 ]
 
 class SendMessage extends Component {
-  constructor(props) {
-    super(props)
-
-    this.textInput = []
-
-    this.setTextInputRef = (key, element) => {
-      this.textInput[key] = element
-    }
+  closeLIFF = () => {
+    LiffHelper.closeWindow()
   }
 
-  sendMessageToChat(messageKey) {
-    let value = this.textInput[messageKey].value
+  // Declared as variable (or arrow-function) to auto-bind this or this will be undefiend
+  sendMessageToChat = (messageKey, messageValue) => {
+    const {
+      isGeolocationAvailable,
+      isGeolocationEnabled,
+      coords: { latitude, longitude }
+    } = this.props
+    let actions = [
+      {
+        type: 'uri',
+        label: 'Google',
+        uri: `https://google.com`
+      },
+      {
+        type: 'uri',
+        label: 'Facebook',
+        uri: `https://facebook.com`
+      }
+    ]
     let message
     switch (messageKey) {
       case 'text':
-        message = messageHelper.createTextMessage(value); break
+      case 'text_selection':
+        message = messageHelper.createTextMessage(messageValue)
+        break
       case 'image':
-        message = messageHelper.createImageMessage(value, value); break
+        message = messageHelper.createImageMessage(messageValue, messageValue)
+        break
       case 'video':
-        let video = 'https://www.sample-videos.com/img/Sample-png-image-500kb.png'
-        message = messageHelper.createVDOMessage(value, video); break
+        message = messageHelper.createVDOMessage(
+          messageValue,
+          'https://www.sample-videos.com/img/Sample-png-image-500kb.png'
+        )
+        break
       case 'audio':
-        message = messageHelper.createAudioMessage(value, 3600); break
+        message = messageHelper.createAudioMessage(messageValue, 3600)
+        break
       case 'button':
-        let actions = [
-          {
-            "type": "uri",
-            "label": "Google",
-            "uri": `https://google.com`
-          },
-          {
-            "type": "uri",
-            "label": "Facebook",
-            "uri": `https://facebook.com`
-          },
-        ]
-        message = messageHelper.createButtonMessageWithImage('Select Page', 'Send Buttton Demo', 'https://developers.line.biz/media/messaging-api/using-line-url-scheme/camera-screen-3c7466e3.png', actions)
+        message = messageHelper.createButtonMessageWithImage(
+          'Select Page',
+          'Send Buttton Demo',
+          'https://developers.line.biz/media/messaging-api/using-line-url-scheme/camera-screen-3c7466e3.png',
+          actions
+        )
         break
       case 'confirm':
-        let confirmActions = [
+        actions = [
           {
-            "type": "uri",
-            "label": "YES",
-            "uri": `https://google.com`
+            type: 'uri',
+            label: 'YES',
+            uri: `https://google.com`
           },
           {
-            "type": "uri",
-            "label": "NO",
-            "uri": `https://facebook.com`
+            type: 'uri',
+            label: 'NO',
+            uri: `https://facebook.com`
           }
         ]
-        message = messageHelper.createConfirmMessage('Send Message again', confirmActions)
+        message = messageHelper.createConfirmMessage('Send Message again', actions)
         break
       case 'location':
-        if (this.props.isGeolocationAvailable && this.props.isGeolocationEnabled) {
-          let lat = this.props.coords.latitude
-          let lng = this.props.coords.longitude
-          message = messageHelper.createLocationMessage(lat, lng)
+        if (isGeolocationAvailable && isGeolocationEnabled) {
+          message = messageHelper.createLocationMessage(latitude, longitude)
         } else {
           swal({
             type: 'error',
             title: 'Send Error',
-            text: 'Geolocation is not enabled',
+            text: 'Geolocation is not enabled'
           })
         }
         break
@@ -135,7 +163,7 @@ class SendMessage extends Component {
         message = messageHelper.createTextMessage('ABC')
     }
     if (message) {
-      liffHelper.sendMessages([message])
+      LiffHelper.sendMessages([message])
         .then(() => {
           swal({
             type: 'success',
@@ -144,59 +172,35 @@ class SendMessage extends Component {
             timer: 1000
           })
         })
-        .catch((err) => {
+        .catch(err => {
           swal({
             type: 'error',
             title: 'Send Error',
-            text: err.response.data.message,
+            text: err.response.data.message
           })
         })
     }
   }
 
   render() {
-    let formGroups = messageTypes.map((messageType, index) => {
-      return (
-        <div className="form-group" key={index}>
-          <label 
-          htmlFor={`msg_${messageType.key}`} 
-          className="message-label">
-          {messageType.label}:
-          </label>
-          <div className="input-group">
-            <input 
-            ref={this.setTextInputRef.bind(this, messageType.key)} 
-            id={`msg_${messageType.key}`} 
-            disabled={!messageType.editable} 
-            type="text" 
-            className="form-control" 
-            defaultValue={messageType.value} 
-            />
-            <span className="input-group-btn">
-              <button 
-              className="btn btn-default" 
-              type="button" 
-              disabled={messageType.disabled} 
-              onClick={this.sendMessageToChat.bind(this, `${messageType.key}`)} >
-              Send
-            </button>
-            </span>
-          </div>
-        </div>
-      )
-    })
     return (
       <div className="page-content">
         <div className="col-lg-3" />
         <div className="col-lg-6">
-          {formGroups}
+          {messageTypes.map(messageType => (
+            <div className="form-group" key={messageType.key}>
+              <MessageField
+                messageFieldType={messageType}
+                sendMessageToChat={this.sendMessageToChat}
+                setTextInput={this.setTextInputRef}
+                inputRef={createRef()}
+              />
+            </div>
+          ))}
           <hr />
-          <button 
-          type="button" 
-          className="btn btn-default" 
-          onClick={() => { liffHelper.closeWindow() }}>
-          Close LIFF
-        </button>
+          <button type="button" className="btn btn-default" onClick={this.closeLIFF}>
+            Close LIFF
+          </button>
         </div>
         <div className="col-lg-3" />
       </div>
@@ -206,12 +210,23 @@ class SendMessage extends Component {
 
 export default geolocated({
   positionOptions: {
-    enableHighAccuracy: true,
+    enableHighAccuracy: true
   },
-  userDecisionTimeout: 5000,
+  userDecisionTimeout: 5000
 })(SendMessage)
 
-SendMessage.PropTypes = {
-  textInput: PropTypes.array.isRequired,
-  setTextInputRef: PropTypes.func.isRequired,
+// For geolocation implementation
+SendMessage.propTypes = {
+  isGeolocationAvailable: PropTypes.bool,
+  isGeolocationEnabled: PropTypes.bool,
+  coords: PropTypes.shape({
+    latitude: PropTypes.number,
+    longitude: PropTypes.number
+  })
+}
+
+SendMessage.defaultProps = {
+  isGeolocationAvailable: false,
+  isGeolocationEnabled: false,
+  coords: {}
 }
