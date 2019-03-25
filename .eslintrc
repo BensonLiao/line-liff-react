@@ -1,9 +1,4 @@
 {
-  "settings": {
-    "react": {
-      "version": "999.999.999"
-    }
-  },
   "parser": "babel-eslint",
   "parserOptions": {
     "ecmaVersion": 6,
@@ -18,7 +13,7 @@
     "node": true
   },
   "extends": ["airbnb", "prettier"],
-  "plugins": ["prettier"],
+  "plugins": ["react", "prettier"],
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/destructuring-assignment": "warning",
