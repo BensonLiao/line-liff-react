@@ -13,7 +13,7 @@
     "node": true
   },
   "extends": ["airbnb", "prettier"],
-  "plugins": ["prettier"],
+  "plugins": ["react", "prettier"],
   "settings": {
     "react": {
       "version": "16.4.1"
