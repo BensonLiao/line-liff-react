@@ -34,12 +34,12 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "local": "PORT=8000 react-scripts start",
+    "local": "PORT=3000 react-scripts start",
     "lt": "node ./node_modules/localtunnel/bin/client --port=8000",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "ngrok": "./ngrok http 3000",
+    "ngrok": "./ngrok http 8000",
     "storybook": "start-storybook -p 9001 -c .storybook"
   }
 }
