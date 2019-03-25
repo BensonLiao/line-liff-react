@@ -1,6 +1,5 @@
-
 {
-  "name": "LINE Liff React",
-  "description": "Sample LINE LIFF React application",
-  "repository": "https://github.com/BensonLiao/line-liff-react"
+  "name": "LIFF React Boilerplate",
+  "description": "Sample LIFF (LINE Front-end-Framework) React boilerplate application",
+  "repository": "https://github.com/BensonLiao/lliff-react-boilerplate"
 }
