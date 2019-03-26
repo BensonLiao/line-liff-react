@@ -16,7 +16,7 @@
   "plugins": ["react", "prettier"],
   "settings": {
     "react": {
-      "version": "16.4.1"
+      "version": "latest"
     }
   },
   "rules": {
