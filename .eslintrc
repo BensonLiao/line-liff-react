@@ -22,7 +22,7 @@
   "settings": {
     "react": {
       "pragma": "React",
-      "version": "^16.8.5"
+      "version": "detect"
     }
   },
   "plugins": ["react", "import", "prettier"],
