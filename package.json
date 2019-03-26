@@ -39,6 +39,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
+    "lint": "eslint --debug .",
     "ngrok": "./ngrok http 8000",
     "storybook": "start-storybook -p 9001 -c .storybook"
   }

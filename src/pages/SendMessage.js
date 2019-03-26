@@ -99,12 +99,12 @@ class SendMessage extends Component {
       {
         type: 'uri',
         label: 'Google',
-        uri: `https://google.com`
+        uri: 'https://google.com'
       },
       {
         type: 'uri',
         label: 'Facebook',
-        uri: `https://facebook.com`
+        uri: 'https://facebook.com'
       }
     ]
     let message
@@ -138,12 +138,12 @@ class SendMessage extends Component {
           {
             type: 'uri',
             label: 'YES',
-            uri: `https://google.com`
+            uri: 'https://google.com'
           },
           {
             type: 'uri',
             label: 'NO',
-            uri: `https://facebook.com`
+            uri: 'https://facebook.com'
           }
         ]
         message = messageHelper.createConfirmMessage('Send Message again', actions)

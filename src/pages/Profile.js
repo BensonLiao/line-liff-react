@@ -4,27 +4,6 @@ import man from '../assets/img/man.png'
 import liffHelper from '../utils/liffHelper'
 
 export default class Profile extends Component {
-  // constructor(props) {
-  //   super(props)
-
-  //   this.setState({
-  //     ...props.profile
-  //   })
-  // }
-
-  // state = {
-  //   profile: {
-  //     pictureUrl: man,
-  //     userId: this.props.profile.userId || '',
-  //     displayName: this.props.profile.displayName || '',
-  //     statusMessage: this.props.profile.statusMessage || ''
-  //   }
-  // }
-
-  // state: {
-  //   profile: { pictureUrl: man, userId: '', displayName: '', statusMessage: '' }
-  // } = this.props
-
   state = { ...this.props }
 
   componentDidMount() {
