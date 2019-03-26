@@ -19,12 +19,13 @@
     "prettier",
     "airbnb"
   ],
-  "plugins": ["react", "import", "prettier"],
   "settings": {
     "react": {
+      "pragma": "React",
       "version": "^16.8.5"
     }
   },
+  "plugins": ["react", "import", "prettier"],
   "rules": {
     "no-undef": 1,
     "operator-linebreak": [1, "after"],
