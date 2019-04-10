@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import man from '../assets/img/man.png'
-import liffHelper from '../utils/liffHelper'
+import LiffHelper from '../utils/liffHelper'
+
+const liffHelper = new LiffHelper()
 
 export default class Profile extends Component {
   state = { ...this.props }
@@ -12,9 +14,7 @@ export default class Profile extends Component {
 
   render() {
     // destructing assignment
-    const {
-      profile: { pictureUrl, userId, displayName, statusMessage }
-    } = this.state
+    const {profile: { pictureUrl, userId, displayName, statusMessage }} = this.state
     return (
       <div className="page-content">
         <div className="col-lg-3" />
@@ -64,7 +64,7 @@ export default class Profile extends Component {
             type="button"
             className="btn btn-default"
             onClick={() => {
-              liffHelper.closeWindow()
+              LiffHelper.closeWindow()
             }}
           >
             Close LIFF
