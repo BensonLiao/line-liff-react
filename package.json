@@ -37,7 +37,7 @@
     "eject": "react-scripts eject",
     "lint": "eslint --debug .",
     "ngrok": "./ngrok http 8000",
-    "storybook": "start-storybook -p 9001 -c .storybook"
+    "sb": "start-storybook -p 9001 -c .storybook"
   },
   "browserslist": [
     ">0.2%",
