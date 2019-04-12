@@ -16,8 +16,6 @@
     "react-geolocated": "^2.4.0",
     "react-router-dom": "^4.3.1",
     "react-scripts": "^2.1.8",
-    "styled-components": "^4.2.0",
-    "styled-system": "^4.1.0",
     "sweetalert2": "^7.26.9"
   },
   "devDependencies": {
