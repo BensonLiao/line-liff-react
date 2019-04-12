@@ -88,20 +88,22 @@ Sitthi Thiammekha
 
 # Deploy as a server
 
+# \* Note. due to the issue of [conflict of same required dependencies between StoryBook v5 and CRA v2](https://github.com/storybooks/storybook/issues/4764), althogth it works on local build but failed on heroku. And I couldn't find out what cause the problem yet, sorry about that~ :(
+
 ## Prerequisites
 
 - A [Heroku account](https://www.heroku.com)
 
 ## Deploying the application
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/BensonLiao/line-liff-react)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/BensonLiao/liff-react-boilerplate)
 
 1. Click the above "Deploy to Heroku button".
 2. Fill in the required information on the "Create a New App" page in Heroku.
 3. Select Deploy app and confirm that your app is successfully deployed.
 4. Record the app URL (https://{Heroku app name}.herokuapp.com). You will set this URL when you add the app to LIFF.
 
-## Adding the starter app to LIFF
+## Adding the boilerplate app to LIFF
 
 Add the app to LIFF. For more information, see [Adding a LIFF app](https://developers.line.me/en/docs/liff/registering-liff-apps/).
 
@@ -144,7 +146,7 @@ To get more information, you can check the logs of your app using [Heroku CLI][h
    $ heroku logs --app {Heroku app name} --tail
    ```
 
-## Downloading and making changes to the starter app
+## Downloading and making changes to the boilerplate app
 
 You can download the starter app to your local machine to test and make changes for yourself. You can then deploy the app to a web server of your choice. Here, we'll look at how to make and deploy changes to the Heroku app you created in the previous step.
 
@@ -152,10 +154,10 @@ You can download the starter app to your local machine to test and make changes 
 
    - [Git](https://git-scm.com/)
 
-1. Clone the [line-liff-starter](https://github.com/line/line-liff-starter) GitHub repository.
+1. Clone the [liff-react-boilerplate](https://github.com/BensonLiao/liff-react-boilerplate) GitHub repository.
 
    ```shell
-   git clone https://github.com/line/line-liff-starter.git
+   git clone https://github.com/BensonLiao/liff-react-boilerplate.git
    ```
 
 1. `cd` into your Git directory.
