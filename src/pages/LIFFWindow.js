@@ -1,29 +1,27 @@
 import React, { Component } from 'react'
-import liffHelper from '../utils/liffHelper'
+import LiffHelper from '../utils/liffHelper'
 
 export default class LIFFWindow extends Component {
   constructor(props) {
     super(props)
 
     this.textInput = null
-
-    this.setTextInputRef = this.setTextInputRef.bind(this)
-    this.openLIFFWindow = this.openLIFFWindow.bind(this)
-    this.openLIFFWindowExternal = this.openLIFFWindowExternal.bind(this)
-    // bind external function
-    this.closeWindow = liffHelper.closeWindow()
   }
 
   setTextInputRef = element => {
     this.textInput = element
   }
 
-  openLIFFWindow() {
-    liffHelper.openWindow(this.textInput.value, false)
+  openLIFFWindow = () => {
+    LiffHelper.openWindow(this.textInput.value, false)
   }
 
-  openLIFFWindowExternal() {
-    liffHelper.openWindow(this.textInput.value, true)
+  openLIFFWindowExternal = () => {
+    LiffHelper.openWindow(this.textInput.value, true)
+  }
+
+  closeWindow = () => {
+    LiffHelper.closeWindow()
   }
 
   render() {
