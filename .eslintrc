@@ -27,23 +27,33 @@
   },
   "plugins": ["react", "import", "prettier"],
   "rules": {
-    "no-undef": 1,
-    "operator-linebreak": [1, "after"],
-    "no-use-before-define": [1, "nofunc"],
-    "no-param-reassign": 1,
-    "semi": 0,
-    "comma-dangle": 0,
-    "object-curly-newline": [1, { "multiline": true }],
-    "object-curly-spacing": [1, "always"],
-    "arrow-body-style": 0,
-    "arrow-parens": [1, "as-needed", { "requireForBlockBody": true }],
-    "no-underscore-dangle": 0,
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "no-undef": "warn",
+    "operator-linebreak": ["warn", "after"],
+    "no-use-before-define": ["warn", "nofunc"],
+    "no-param-reassign": "warn",
+    "semi": "off",
+    "comma-dangle": "off",
+    "object-curly-newline": ["warn", { "multiline": true }],
+    "object-curly-spacing": ["warn", "always"],
+    "implicit-arrow-linebreak": "warn",
+    "function-paren-newline": "warn",
+    "arrow-body-style": "off",
+    "arrow-parens": ["warn", "as-needed", { "requireForBlockBody": true }],
+    "no-underscore-dangle": "off",
+    "import/prefer-default-export": "warn",
+    "react/jsx-filename-extension": ["warn", { "extensions": [".js", ".jsx"] }],
     "react/destructuring-assignment": "warn",
     "react/prop-types": "warn",
+    "react/require-default-props": "warn",
     "react/forbid-prop-types": "warn",
     "react/prefer-stateless-function": "warn",
     "prettier/prettier": ["warn"],
-    "jsx-a11y/label-has-for": 0
+    "jsx-a11y/label-has-for": "off",
+    "jsx-a11y/label-has-associated-control": [
+      "warn",
+      {
+        "assert": "both"
+      }
+    ]
   }
 }

@@ -2,7 +2,7 @@ import React, { Component, createRef } from 'react'
 import PropTypes from 'prop-types'
 import swal from 'sweetalert2'
 import { geolocated } from 'react-geolocated'
-import MessageField from './MessageField'
+import { MessageField } from './components'
 import LiffHelper from '../utils/liffHelper'
 import messageHelper from '../utils/messagingApiHelper'
 
@@ -209,9 +209,7 @@ class SendMessage extends Component {
 }
 
 export default geolocated({
-  positionOptions: {
-    enableHighAccuracy: true
-  },
+  positionOptions: { enableHighAccuracy: true },
   userDecisionTimeout: 5000
 })(SendMessage)
 

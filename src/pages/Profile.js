@@ -1,9 +1,22 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import styled, { ThemeProvider } from 'styled-components'
+import { borderRadius, width } from 'styled-system'
 import man from '../assets/img/man.png'
 import LiffHelper from '../utils/liffHelper'
+import { page, PageContainer } from './styles/page'
+import { FormGroup, FormControl, FormLabel } from './components'
 
 const liffHelper = new LiffHelper()
+
+const Avatar = styled.img`
+  ${borderRadius}
+  ${width}
+`
+Avatar.defaultProps = {
+  borderRadius: '50%',
+  width: '130px'
+}
 
 export default class Profile extends Component {
   state = { ...this.props }
@@ -16,49 +29,33 @@ export default class Profile extends Component {
     // destructing assignment
     const {profile: { pictureUrl, userId, displayName, statusMessage }} = this.state
     return (
-      <div className="page-content">
-        <div className="col-lg-3" />
-        <div className="col-lg-6">
+      <ThemeProvider theme={page}>
+        <PageContainer>
           <div>
-            <img width="130" className="avatar-img" alt="profile" src={pictureUrl} />
+            <Avatar alt="profile" src={pictureUrl} />
           </div>
           <hr />
-          <div className="form-group">
-            <label htmlFor="userid">
-              User ID:
-              <input type="text" className="form-control" disabled id="userid" value={userId} />
-            </label>
-          </div>
-          <div className="form-group">
-            <label htmlFor="name">
-              Display Name:
-              <input type="text" className="form-control" disabled id="name" value={displayName} />
-            </label>
-          </div>
-          <div className="form-group">
-            <label htmlFor="status">
-              Status Message:
-              <input
-                type="text"
-                className="form-control"
-                disabled
-                id="status"
-                value={statusMessage}
-              />
-            </label>
-          </div>
-          <div className="form-group">
-            <label htmlFor="info">
-              LIFF Info:
-              <textarea
-                rows="10"
-                className="form-control"
-                disabled
-                id="info"
-                value={JSON.stringify(liffHelper.getLIFFInfo(), '', 2)}
-              />
-            </label>
-          </div>
+          <FormGroup controlId="user-id">
+            <FormLabel>User ID:</FormLabel>
+            <FormControl type="text" value={userId} disabled />
+          </FormGroup>
+          <FormGroup controlId="name">
+            <FormLabel>Display Name:</FormLabel>
+            <FormControl type="text" value={displayName} disabled />
+          </FormGroup>
+          <FormGroup controlId="status">
+            <FormLabel>Display Name:</FormLabel>
+            <FormControl type="text" value={statusMessage} disabled />
+          </FormGroup>
+          <FormGroup controlId="liff-info">
+            <FormLabel>LIFF Info:</FormLabel>
+            <FormControl
+              type="textarea"
+              rows="10"
+              disabled
+              value={JSON.stringify(liffHelper.getLIFFInfo(), '', 2)}
+            />
+          </FormGroup>
           <hr />
           <button
             type="button"
@@ -69,9 +66,8 @@ export default class Profile extends Component {
           >
             Close LIFF
           </button>
-        </div>
-        <div className="col-lg-3" />
-      </div>
+        </PageContainer>
+      </ThemeProvider>
     )
   }
 }
