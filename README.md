@@ -11,7 +11,7 @@ Starter Kit for ReactJs developer to run and learn [LINE Frontend Framework](htt
 
 This project build from [create-react-app](https://github.com/facebook/create-react-app) and [bootstrap](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#adding-bootstrap). Then add Line Frontend Framework (LIFF) [SDK](https://developers.line.me/en/docs/liff/developing-liff-apps/) and also provide `LiffHelper` and `messagingApiHelper` to help in communicate with LINE LIFF Platform.
 
-- There's also a version build with styled-system that makes you design and systemize your own style or theme more easily: [liff-react-boilerplate](https://github.com/BensonLiao/liff-react-boilerplate/tree/with_styled_system), enjoy and feel free to any bug or suggetstion~:)
+- There's also a version build with styled-system that makes you design and systemize your own style or theme more easily: [liff-react-boilerplate](https://github.com/BensonLiao/liff-react-boilerplate/tree/with_styled_system), enjoy and feel free to report any bug or suggestion~:)
 
 # Install
 
