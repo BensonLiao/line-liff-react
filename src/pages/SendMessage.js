@@ -41,7 +41,8 @@ const messageTypes = [
     key: 'video',
     label: 'Video',
     editable: false,
-    value: 'https://www.sample-videos.com/video/mp4/720/big_buck_bunny_720p_5mb.mp4'
+    value:
+      'https://www.sample-videos.com/video/mp4/720/big_buck_bunny_720p_5mb.mp4'
   },
   {
     key: 'audio',
@@ -146,7 +147,10 @@ class SendMessage extends Component {
             uri: 'https://facebook.com'
           }
         ]
-        message = messageHelper.createConfirmMessage('Send Message again', actions)
+        message = messageHelper.createConfirmMessage(
+          'Send Message again',
+          actions
+        )
         break
       case 'location':
         if (isGeolocationAvailable && isGeolocationEnabled) {
@@ -198,7 +202,11 @@ class SendMessage extends Component {
             </div>
           ))}
           <hr />
-          <button type="button" className="btn btn-default" onClick={this.closeLIFF}>
+          <button
+            type="button"
+            className="btn btn-default"
+            onClick={this.closeLIFF}
+          >
             Close LIFF
           </button>
         </div>
@@ -209,9 +217,7 @@ class SendMessage extends Component {
 }
 
 export default geolocated({
-  positionOptions: {
-    enableHighAccuracy: true
-  },
+  positionOptions: { enableHighAccuracy: true },
   userDecisionTimeout: 5000
 })(SendMessage)
 
