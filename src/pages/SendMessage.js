@@ -2,7 +2,7 @@ import React, { Component, createRef } from 'react'
 import PropTypes from 'prop-types'
 import swal from 'sweetalert2'
 import { geolocated } from 'react-geolocated'
-import MessageField from './MessageField'
+import MessageField from './components/MessageField'
 import LiffHelper from '../utils/liffHelper'
 import messageHelper from '../utils/messagingApiHelper'
 
