@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "./static/css/main.d7d431e3.chunk.css",
-    "main.js": "./static/js/main.dda7f84c.chunk.js",
-    "main.js.map": "./static/js/main.dda7f84c.chunk.js.map",
-    "runtime~main.js": "./static/js/runtime~main.d653cc00.js",
-    "runtime~main.js.map": "./static/js/runtime~main.d653cc00.js.map",
-    "static/css/2.fd88bf4d.chunk.css": "./static/css/2.fd88bf4d.chunk.css",
-    "static/js/2.3b90296d.chunk.js": "./static/js/2.3b90296d.chunk.js",
-    "static/js/2.3b90296d.chunk.js.map": "./static/js/2.3b90296d.chunk.js.map",
-    "index.html": "./index.html",
-    "precache-manifest.6b982374de8d33d5843e41a4d1ad3267.js": "./precache-manifest.6b982374de8d33d5843e41a4d1ad3267.js",
-    "service-worker.js": "./service-worker.js",
-    "static/css/2.fd88bf4d.chunk.css.map": "./static/css/2.fd88bf4d.chunk.css.map",
-    "static/css/main.d7d431e3.chunk.css.map": "./static/css/main.d7d431e3.chunk.css.map",
-    "static/media/bootstrap.css": "./static/media/glyphicons-halflings-regular.fa277232.woff"
+    "main.css": "/liff-react-boilerplate/static/css/main.d7d431e3.chunk.css",
+    "main.js": "/liff-react-boilerplate/static/js/main.04c32d52.chunk.js",
+    "main.js.map": "/liff-react-boilerplate/static/js/main.04c32d52.chunk.js.map",
+    "runtime~main.js": "/liff-react-boilerplate/static/js/runtime~main.8a8a984e.js",
+    "runtime~main.js.map": "/liff-react-boilerplate/static/js/runtime~main.8a8a984e.js.map",
+    "static/css/2.abcc5b61.chunk.css": "/liff-react-boilerplate/static/css/2.abcc5b61.chunk.css",
+    "static/js/2.3b90296d.chunk.js": "/liff-react-boilerplate/static/js/2.3b90296d.chunk.js",
+    "static/js/2.3b90296d.chunk.js.map": "/liff-react-boilerplate/static/js/2.3b90296d.chunk.js.map",
+    "index.html": "/liff-react-boilerplate/index.html",
+    "precache-manifest.984bcdbcd57e3fb3f22b058af2f45e4f.js": "/liff-react-boilerplate/precache-manifest.984bcdbcd57e3fb3f22b058af2f45e4f.js",
+    "service-worker.js": "/liff-react-boilerplate/service-worker.js",
+    "static/css/2.abcc5b61.chunk.css.map": "/liff-react-boilerplate/static/css/2.abcc5b61.chunk.css.map",
+    "static/css/main.d7d431e3.chunk.css.map": "/liff-react-boilerplate/static/css/main.d7d431e3.chunk.css.map",
+    "static/media/bootstrap.css": "/liff-react-boilerplate/static/media/glyphicons-halflings-regular.fa277232.woff"
   }
 }
