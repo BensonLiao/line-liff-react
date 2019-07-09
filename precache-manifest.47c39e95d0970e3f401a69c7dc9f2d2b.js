@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "cb90068b39b95b141137139385fac434",
+    "revision": "0a399228fde8680859a3e8632e0f08aa",
     "url": "/liff-react-boilerplate/index.html"
   },
   {
-    "revision": "9a80f36aa36946e40cf6",
+    "revision": "b10b1afbb4cd43d27285",
     "url": "/liff-react-boilerplate/static/css/2.abcc5b61.chunk.css"
   },
   {
-    "revision": "d18279aee5a95cfc77b6",
+    "revision": "bf35d5237895355118c7",
     "url": "/liff-react-boilerplate/static/css/main.d7d431e3.chunk.css"
   },
   {
-    "revision": "9a80f36aa36946e40cf6",
-    "url": "/liff-react-boilerplate/static/js/2.3b90296d.chunk.js"
+    "revision": "b10b1afbb4cd43d27285",
+    "url": "/liff-react-boilerplate/static/js/2.d320430f.chunk.js"
   },
   {
-    "revision": "d18279aee5a95cfc77b6",
-    "url": "/liff-react-boilerplate/static/js/main.3478fc02.chunk.js"
+    "revision": "bf35d5237895355118c7",
+    "url": "/liff-react-boilerplate/static/js/main.a9af7465.chunk.js"
   },
   {
     "revision": "efde0d75e54efd131e1e",
