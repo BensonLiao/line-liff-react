@@ -6,7 +6,6 @@
   },
   "private": true,
   "dependencies": {
-    "@storybook/react": "^5.0.6",
     "bootstrap": "^3.3.7",
     "classnames": "^2.2.6",
     "prop-types": "^15.7.2",
@@ -15,7 +14,7 @@
     "react-dom": "^16.8.5",
     "react-geolocated": "^2.4.0",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "^2.1.8",
+    "react-scripts": "^3.0.1",
     "sweetalert2": "^7.26.9"
   },
   "devDependencies": {
@@ -25,20 +24,17 @@
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.12.4",
-    "localtunnel": "^1.9.1",
     "prettier": "^1.16.4",
     "react-test-renderer": "^16.8.6"
   },
   "scripts": {
     "start": "react-scripts start",
     "local": "PORT=3000 react-scripts start",
-    "lt": "node ./node_modules/localtunnel/bin/client --port=8000",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "lint": "eslint --debug .",
-    "ngrok": "./ngrok http 8000",
-    "sb": "start-storybook -p 9001 -c .storybook"
+    "ngrok": "./ngrok http 8000"
   },
   "browserslist": [
     ">0.2%",
