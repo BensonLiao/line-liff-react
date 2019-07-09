@@ -19,12 +19,11 @@
   "devDependencies": {},
   "scripts": {
     "start": "react-scripts start",
-    "localstart": "PORT=8000 react-scripts start",
     "build": "react-scripts build",
     "deploy": "gh-pages -d build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "ngrok": "./ngrok http 3000"
+    "ngrok": "./ngrok http 8000"
   },
   "browserslist": {
     "production": [
