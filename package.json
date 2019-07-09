@@ -2,7 +2,7 @@
   "name": "liff-react-boilerplate",
   "version": "1.0.0",
   "engines": {
-    "node": "11.7.0"
+    "node": "12.1.0"
   },
   "private": true,
   "homepage": "https://bensonliao.github.io/liff-react-boilerplate",
