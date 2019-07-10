@@ -15,8 +15,11 @@ import messageHelper from "../utils/messagingApiHelper";
 
 const textOptions = [
   "give me brown",
+  "給我熊大",
   "search imgur account",
-  "upload to imgur"
+  "搜尋imgur帳號",
+  "upload image to imgur",
+  "上傳圖片到imgur"
 ];
 
 const datalistId = "text-options";
