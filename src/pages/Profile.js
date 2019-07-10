@@ -80,11 +80,6 @@ export default class Profile extends Component {
             <Col lg={3} />
           </Row>
         </Container>
-        {/* <div className="col-lg-3" />
-        <div className="col-lg-6">
-          
-        </div>
-        <div className="col-lg-3" /> */}
       </div>
     );
   }
