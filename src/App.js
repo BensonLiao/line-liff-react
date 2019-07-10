@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { HashRouter, Route } from "react-router-dom";
 import "./App.css";
+import Tab from "react-bootstrap/Tab";
+import Tabs from "react-bootstrap/Tabs";
 import Profile from "./pages/Profile";
 import SendMessage from "./pages/SendMessage";
 import LIFFWindow from "./pages/LIFFWindow";
-import Header from "./pages/components/Header";
 
 class App extends Component {
   render() {
@@ -13,14 +13,17 @@ class App extends Component {
         <header className="app-header">
           <h3 className="app-title">React LIFF Boilerplate</h3>
         </header>
-        <Header />
-        <HashRouter basename="/">
-          <div>
-            <Route exact path="/" component={Profile} />
-            <Route path="/message" component={SendMessage} />
-            <Route path="/window" component={LIFFWindow} />
-          </div>
-        </HashRouter>
+        <Tabs defaultActiveKey="profile" id="uncontrolled-tab">
+          <Tab eventKey="profile" title="Profile">
+            <Profile />
+          </Tab>
+          <Tab eventKey="message" title="SendMessage">
+            <SendMessage />
+          </Tab>
+          <Tab eventKey="window" title="LIFFWindow">
+            <LIFFWindow />
+          </Tab>
+        </Tabs>
       </div>
     );
   }

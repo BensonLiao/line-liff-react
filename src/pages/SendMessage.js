@@ -1,5 +1,11 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import InputGroup from "react-bootstrap/InputGroup";
+import FormControl from "react-bootstrap/FormControl";
+import Button from "react-bootstrap/Button";
 import swal from "sweetalert2";
 import { geolocated } from "react-geolocated";
 import liffHelper from "../utils/liffHelper";
@@ -183,58 +189,63 @@ class SendMessage extends Component {
 
   getInputElement(messageType) {
     return messageType.key === "text" ? (
-      <input
-        ref={this.setTextInputRef.bind(this, messageType.key)}
-        id={`msg_${messageType.key}`}
-        disabled={!messageType.editable}
-        type="text"
-        list={datalistId}
-        className="form-control"
-        placeholder="Type some message or choose from list"
-      />
+      <InputGroup className="mb-3">
+        <FormControl
+          ref={this.setTextInputRef.bind(this, messageType.key)}
+          disabled={!messageType.editable}
+          defaultValue={messageType.value}
+          list={datalistId}
+        />
+        <InputGroup.Append>
+          <Button
+            variant="secondary"
+            disabled={messageType.disabled}
+            onClick={this.sendMessageToChat.bind(this, `${messageType.key}`)}
+          >
+            Send
+          </Button>
+        </InputGroup.Append>
+      </InputGroup>
     ) : (
-      <input
-        ref={this.setTextInputRef.bind(this, messageType.key)}
-        id={`msg_${messageType.key}`}
-        disabled={!messageType.editable}
-        type="text"
-        className="form-control"
-        defaultValue={messageType.value}
-      />
+      <InputGroup className="mb-3">
+        <FormControl
+          ref={this.setTextInputRef.bind(this, messageType.key)}
+          disabled={!messageType.editable}
+          defaultValue={messageType.value}
+        />
+        <InputGroup.Append>
+          <Button
+            variant="secondary"
+            disabled={messageType.disabled}
+            onClick={this.sendMessageToChat.bind(this, `${messageType.key}`)}
+          >
+            Send
+          </Button>
+        </InputGroup.Append>
+      </InputGroup>
     );
   }
 
   renderMessageTypeKey() {
     return messageTypes.map(messageType => (
-      <div className="form-group" key={messageType.key}>
-        <label htmlFor={`msg_${messageType.key}`} className="message-label">
-          {messageType.label}:
-        </label>
-        <div className="input-group">
-          {this.getInputElement(messageType)}
-          {/* note. datalist are not supported on some browser */}
-          {/* ref: https://caniuse.com/#search=datalist */}
-          {/* if in production, it should be handle properly with detect or fallback */}
-          {messageType.key === "text" && (
-            <datalist id={datalistId}>
-              {textOptions.map(option => (
-                <option value={option} key={option}>
-                  {option}
-                </option>
-              ))}
-            </datalist>
-          )}
-          <span className="input-group-btn">
-            <button
-              type="button"
-              className="btn btn-default"
-              disabled={messageType.disabled}
-              onClick={this.sendMessageToChat.bind(this, `${messageType.key}`)}
-            >
-              Send
-            </button>
-          </span>
-        </div>
+      <div key={messageType.key}>
+        <label htmlFor={`msg_${messageType.key}`}>{messageType.label}:</label>
+        {this.getInputElement(messageType)}
+        {/* note. datalist are not supported on some browser */}
+        {/* ref: https://caniuse.com/#search=datalist */}
+        {/* if in production, it should be handle properly with detect or fallback */}
+        {messageType.key === "text" && (
+          <datalist id={datalistId}>
+            {textOptions.map(option => (
+              <option value={option} key={option}>
+                {option}
+              </option>
+            ))}
+            <select name={`form-group-${messageType.key}`}>
+              Type some message other than list:
+            </select>
+          </datalist>
+        )}
       </div>
     ));
   }
@@ -242,21 +253,24 @@ class SendMessage extends Component {
   render() {
     return (
       <div className="page-content">
-        <div className="col-lg-3" />
-        <div className="col-lg-6">
-          {this.renderMessageTypeKey()}
-          <hr />
-          <button
-            type="button"
-            className="btn btn-default"
-            onClick={() => {
-              liffHelper.closeWindow();
-            }}
-          >
-            Close LIFF
-          </button>
-        </div>
-        <div className="col-lg-3" />
+        <Container>
+          <Row>
+            <Col lg={3} />
+            <Col lg={6}>
+              {this.renderMessageTypeKey()}
+              <hr />
+              <Button
+                variant="success"
+                onClick={() => {
+                  liffHelper.closeWindow();
+                }}
+              >
+                Close LIFF
+              </Button>
+            </Col>
+            <Col lg={3} />
+          </Row>
+        </Container>
       </div>
     );
   }
