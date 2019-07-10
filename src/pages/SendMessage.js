@@ -5,6 +5,8 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
+import Dropdown from "react-bootstrap/Dropdown";
+import DropdownButton from "react-bootstrap/DropdownButton";
 import Button from "react-bootstrap/Button";
 import swal from "sweetalert2";
 import { geolocated } from "react-geolocated";
@@ -83,9 +85,11 @@ const messageTypes = [
 class SendMessage extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      textListKey: ""
+    };
 
     this.textInput = [];
-
     this.setTextInputRef = (key, element) => {
       this.textInput[key] = element;
     };
@@ -226,24 +230,79 @@ class SendMessage extends Component {
     );
   }
 
-  renderMessageTypeKey() {
+  getMobileInputElement(messageType) {
+    const { textListKey } = this.state;
+    return messageType.key === "text" ? (
+      <InputGroup className="mb-3">
+        <DropdownButton
+          as={InputGroup.Prepend}
+          variant="outline-secondary"
+          title="Select"
+          id="input-group-dropdown-1"
+          onSelect={key => {
+            this.setState({ textListKey: key });
+          }}
+        >
+          {textOptions.map(option => (
+            <Dropdown.Item eventKey={option} key={option}>
+              {option}
+            </Dropdown.Item>
+          ))}
+        </DropdownButton>
+        <FormControl
+          ref={this.setTextInputRef.bind(this, messageType.key)}
+          disabled={!messageType.editable}
+          value={textListKey}
+          onChange={value => {
+            console.log("value", value);
+          }}
+        />
+        <InputGroup.Append>
+          <Button
+            variant="secondary"
+            disabled={messageType.disabled}
+            onClick={this.sendMessageToChat.bind(this, `${messageType.key}`)}
+          >
+            Send
+          </Button>
+        </InputGroup.Append>
+      </InputGroup>
+    ) : (
+      <InputGroup className="mb-3">
+        <FormControl
+          ref={this.setTextInputRef.bind(this, messageType.key)}
+          disabled={!messageType.editable}
+          defaultValue={messageType.value}
+        />
+        <InputGroup.Append>
+          <Button
+            variant="secondary"
+            disabled={messageType.disabled}
+            onClick={this.sendMessageToChat.bind(this, `${messageType.key}`)}
+          >
+            Send
+          </Button>
+        </InputGroup.Append>
+      </InputGroup>
+    );
+  }
+
+  renderMessageTypeKey(isMobileBrowser = false) {
     return messageTypes.map(messageType => (
       <div key={messageType.key}>
         <label htmlFor={`msg_${messageType.key}`}>{messageType.label}:</label>
-        {this.getInputElement(messageType)}
-        {/* note. datalist are not supported on some browser */}
+        {!isMobileBrowser && this.getInputElement(messageType)}
+        {isMobileBrowser && this.getMobileInputElement(messageType)}
+        {/* note. <datalist> are not supported on some browser */}
         {/* ref: https://caniuse.com/#search=datalist */}
         {/* if in production, it should be handle properly with detect or fallback */}
-        {messageType.key === "text" && (
+        {!isMobileBrowser && messageType.key === "text" && (
           <datalist id={datalistId}>
             {textOptions.map(option => (
               <option value={option} key={option}>
                 {option}
               </option>
             ))}
-            <select name={`form-group-${messageType.key}`}>
-              Type some message other than list:
-            </select>
           </datalist>
         )}
       </div>
@@ -251,13 +310,25 @@ class SendMessage extends Component {
   }
 
   render() {
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    console.log("userAgent:", userAgent);
+    // Usually when user click a link in LINE it will open an IAB,
+    // which limited the compatibility to frontend technologies like
+    // native mobile browser.
+    // LINE introduced LIFF which use native mobile browser,
+    // gives more compatibility to frontend technologies.
+    //&& userAgent.toLowerCase().indexOf("android");
+    const isInAppBrowser = userAgent.toLowerCase().indexOf("IAB") > -1;
+    console.log("isInAppBrowser", isInAppBrowser);
+    const isMobileBrowser = userAgent.toLowerCase().indexOf("mobile") > -1;
+    console.log("isMobileBrowser", isMobileBrowser);
     return (
       <div className="page-content">
         <Container>
           <Row>
             <Col lg={3} />
             <Col lg={6}>
-              {this.renderMessageTypeKey()}
+              {this.renderMessageTypeKey(isMobileBrowser)}
               <hr />
               <Button
                 variant="success"
