@@ -1,18 +1,17 @@
 {
   "files": {
     "main.css": "/liff-react-boilerplate/static/css/main.d7d431e3.chunk.css",
-    "main.js": "/liff-react-boilerplate/static/js/main.6b44ab3a.chunk.js",
-    "main.js.map": "/liff-react-boilerplate/static/js/main.6b44ab3a.chunk.js.map",
+    "main.js": "/liff-react-boilerplate/static/js/main.6da79270.chunk.js",
+    "main.js.map": "/liff-react-boilerplate/static/js/main.6da79270.chunk.js.map",
     "runtime~main.js": "/liff-react-boilerplate/static/js/runtime~main.8a8a984e.js",
     "runtime~main.js.map": "/liff-react-boilerplate/static/js/runtime~main.8a8a984e.js.map",
-    "static/css/2.abcc5b61.chunk.css": "/liff-react-boilerplate/static/css/2.abcc5b61.chunk.css",
-    "static/js/2.d320430f.chunk.js": "/liff-react-boilerplate/static/js/2.d320430f.chunk.js",
-    "static/js/2.d320430f.chunk.js.map": "/liff-react-boilerplate/static/js/2.d320430f.chunk.js.map",
+    "static/css/2.df9ef6f4.chunk.css": "/liff-react-boilerplate/static/css/2.df9ef6f4.chunk.css",
+    "static/js/2.90c26bdc.chunk.js": "/liff-react-boilerplate/static/js/2.90c26bdc.chunk.js",
+    "static/js/2.90c26bdc.chunk.js.map": "/liff-react-boilerplate/static/js/2.90c26bdc.chunk.js.map",
     "index.html": "/liff-react-boilerplate/index.html",
-    "precache-manifest.736d86c8d84eb8020c543cdb45adcd6b.js": "/liff-react-boilerplate/precache-manifest.736d86c8d84eb8020c543cdb45adcd6b.js",
+    "precache-manifest.239396114ca6adaa368995b6cb3cacef.js": "/liff-react-boilerplate/precache-manifest.239396114ca6adaa368995b6cb3cacef.js",
     "service-worker.js": "/liff-react-boilerplate/service-worker.js",
-    "static/css/2.abcc5b61.chunk.css.map": "/liff-react-boilerplate/static/css/2.abcc5b61.chunk.css.map",
-    "static/css/main.d7d431e3.chunk.css.map": "/liff-react-boilerplate/static/css/main.d7d431e3.chunk.css.map",
-    "static/media/bootstrap.css": "/liff-react-boilerplate/static/media/glyphicons-halflings-regular.fa277232.woff"
+    "static/css/2.df9ef6f4.chunk.css.map": "/liff-react-boilerplate/static/css/2.df9ef6f4.chunk.css.map",
+    "static/css/main.d7d431e3.chunk.css.map": "/liff-react-boilerplate/static/css/main.d7d431e3.chunk.css.map"
   }
 }
