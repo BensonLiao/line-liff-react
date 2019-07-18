@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d0a612f240b96943ba9acdd262c00998",
+    "revision": "0adab1326681e4d24e9807dc1421f20a",
     "url": "/liff-react-boilerplate/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/liff-react-boilerplate/static/css/2.df9ef6f4.chunk.css"
   },
   {
-    "revision": "9229945f58be01049f88",
+    "revision": "7a06a0f400e488c2ec77",
     "url": "/liff-react-boilerplate/static/css/main.d7d431e3.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/liff-react-boilerplate/static/js/2.90c26bdc.chunk.js"
   },
   {
-    "revision": "9229945f58be01049f88",
-    "url": "/liff-react-boilerplate/static/js/main.1eabfc03.chunk.js"
+    "revision": "7a06a0f400e488c2ec77",
+    "url": "/liff-react-boilerplate/static/js/main.cdef399b.chunk.js"
   },
   {
     "revision": "efde0d75e54efd131e1e",
