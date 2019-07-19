@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import "./App.css";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
+import "./App.css";
 import Profile from "./pages/Profile";
 import SendMessage from "./pages/SendMessage";
 import LIFFWindow from "./pages/LIFFWindow";

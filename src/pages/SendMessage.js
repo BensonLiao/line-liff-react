@@ -18,6 +18,8 @@ const textOptions = [
   "給我熊大",
   "search imgur account",
   "搜尋imgur帳號",
+  "search imgur tag",
+  "搜尋imgur分類",
   "upload image to imgur",
   "上傳圖片到imgur"
 ];
@@ -96,6 +98,10 @@ class SendMessage extends Component {
     this.setTextInputRef = (key, element) => {
       this.textInput[key] = element;
     };
+  }
+
+  closeWindow() {
+    liffHelper.closeWindow();
   }
 
   sendMessageToChat(messageKey) {
@@ -182,6 +188,9 @@ class SendMessage extends Component {
             title: "Send Message Complete",
             showConfirmButton: false,
             timer: 1000
+          }).then(() => {
+            console.log("closeWindow on successful sendMessages alert");
+            this.closeWindow();
           });
         })
         .catch(err => {
@@ -333,12 +342,7 @@ class SendMessage extends Component {
             <Col lg={6}>
               {this.renderMessageTypeKey(isMobileBrowser)}
               <hr />
-              <Button
-                variant="success"
-                onClick={() => {
-                  liffHelper.closeWindow();
-                }}
-              >
+              <Button variant="success" onClick={this.closeWindow}>
                 Close LIFF
               </Button>
             </Col>
